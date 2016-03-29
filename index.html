@@ -250,25 +250,25 @@
 	<img class="avatars" src="{{&avatars}}.jpg?v=1">
 	<strong>{{name}}</strong>
 	<p>{{&info}}</p>
-	<span class="more droid italic lightbox-btn" data-type="curator" data-id="{{id}}">
+	<span class="more droid italic lightbox-btn" data-type="curator" data-value="{{name}}" data-id="{{id}}">
 		Read more...
 	</span>
 </script>			
 <script id="template-topic-info" type="x-tmpl-mustache">
-	<span class="date droid italic">
+	<span class="date droid italic" data-value="{{fulldate}}">
 		{{date}}<span class="time">19:00~20:30</span>
 	</span>
 	<span class="title">{{session}}</span>
 	<span class="name">講者：{{speaker}}</span>
 	<div class="description">{{&session_info}}</div>
-	<span class="btn lightbox-btn" data-type="topic" data-id="{{id}}">【詳細資訊】</span>
-	<span class="btn"><a href="{{&url}}" target="_blank">【立即報名】</a></span>
+	<span class="btn lightbox-btn topic-info-btn" data-type="topic" data-id="{{id}}">【詳細資訊】</span>
+	<span class="btn"><a class="register-url" href="{{&url}}" target="_blank">【立即報名】</a></span>
 </script>
 <script id="template-mobile-topic-info" type="x-tmpl-mustache">
-	<span class="date">{{date}}</span>
+	<span class="date" data-value="{{fulldate}}">{{date}}</span>
 	<span class="title">{{session}}</span>
 	<span>講者：{{speaker}}</span>
-	<span class="btn lightbox-btn" data-type="topic" data-id="{{id}}">詳細資訊</span>
+	<span class="btn lightbox-btn topic-info-btn" data-type="topic" data-id="{{id}}">詳細資訊</span>
 </script>
 <script id="template-topic-books" type="x-tmpl-mustache">
 	{{#books}}
@@ -342,7 +342,7 @@
 	<span class="title">貼心提醒</span>
 	<p class="sub">因座位有限，報名後如不克前來也請在活動當天中午前告知取消，謝謝！</p>
 	<p class="sub">在 Facebook 活動按參加並不算完成報名喔，請一定要來信或來電通知！</p>
-	<a href="{{&url}}" target="_blank" class="link">我要報名</a>
+	<a href="{{&url}}" target="_blank" class="link register-url" data-value="{{fulldate}}">我要報名</a>
 </script>
 <script id="template-lightbox-curator" type="x-tmpl-mustache">
 	<span class="title">主題</span>
@@ -357,8 +357,8 @@
 		<p>{{&.}}</p>
 	{{/info}}
 </script>
-<script type="text/javascript" src="js/index.js?t=1458731789"></script>
-<script type="text/javascript" src="js/ga-event.js?t=1458731779"></script>
+<script type="text/javascript" src="js/index.js?t=1458731889"></script>
+<script type="text/javascript" src="js/ga-event.js?t=1458731879"></script>
 </div>
 </body>
 </html>

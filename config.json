@@ -11,6 +11,7 @@
 			"current": true,
 			"topic" : {
 				"date" : "4/1",
+				"fulldate" : "20160401",
 				"session" : "〈自己的廚房〉──從昭和女性辛永清、幸田文的廚藝與家世談起",
 				"session_info" : "",
 				"speaker" : "楊索",
@@ -19,6 +20,7 @@
 			},
 			"next_topic" : {
 				"date" : "5/6",
+				"fulldate" : "20160506",
 				"session" : "",
 				"session_info" : "",
 				"speaker" : "蔣竹山",
@@ -109,6 +111,7 @@
 			],
 			"topic" : {
 				"date" : "4/8",
+				"fulldate" : "20160408",
 				"session" : "我的第3層夢境",
 				"session_info" : "",
 				"speaker" : "賴佳韋",
@@ -117,6 +120,7 @@
 			},
 			"next_topic" : {
 				"date" : "5/13",
+				"fulldate" : "20160513",
 				"session" : "惑與不惑，書與非書。我們的設計閱讀",
 				"session_info" : "",
 				"speaker" : "吳東龍",
@@ -193,6 +197,7 @@
 			],
 			"topic" : {
 				"date" : "4/15",
+				"fulldate" : "20160415",
 				"session" : "村上三重奏",
 				"session_info" : "有關村上春樹作品中，所提爵士樂 / 音樂及威士忌的互動與連結。三重奏是指文學、音樂、酒，三者彼此影響和即興演繹下的共生關係。",
 				"speaker" : "蘇重",
@@ -201,6 +206,7 @@
 			},
 			"next_topic" : {
 				"date" : "5/20",
+				"fulldate" : "20160520",
 				"session" : "詩歌二重唱",
 				"session_info" : "",
 				"speaker" : "馬世芳",
@@ -328,6 +334,7 @@
 			],
 			"topic" : {
 				"date" : "4/22",
+				"fulldate" : "20160422",
 				"session" : "《越旅行越裡面》",
 				"session_info" : "",
 				"speaker" : "陳文玲",
@@ -336,6 +343,7 @@
 			},
 			"next_topic" : {
 				"date" : "5/27",
+				"fulldate" : "20160527",
 				"session" : "",
 				"session_info" : "",
 				"speaker" : "林凱洛",
@@ -428,6 +436,7 @@
 			"info" : [],
 			"topic" : {
 				"date" : "4/29",
+				"fulldate" : "20160429",
 				"session" : "四種切入地中海的方法 與《赫丘力士之柱》",
 				"session_info" : "",
 				"speaker" : "溫佑君",
@@ -436,6 +445,7 @@
 			},
 			"next_topic" : {
 				"date" : "",
+				"fulldate" : "",
 				"session" : "",
 				"session_info" : "",
 				"speaker" : "",
