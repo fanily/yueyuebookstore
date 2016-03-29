@@ -4,8 +4,8 @@ jQuery(function($){
 		ga('yueyuebookstore.send', 'event', 'logo', 'click', 'logo');
 
 	}).on('click', '#back-top a', function(e){
-		ga('yueyuecompany.send', 'event', 'page-down', 'click', 'page-down');
-		ga('yueyuebookstore.send', 'event', 'page-down', 'click', 'page-down');
+		ga('yueyuecompany.send', 'event', 'back-top', 'click', 'back-top');
+		ga('yueyuebookstore.send', 'event', 'back-top', 'click', 'back-top');
 
 	}).on('click', '.nav a', function(e){
 		var val = $(this).attr('href').replace("#","");
@@ -36,6 +36,12 @@ jQuery(function($){
 
 	}).on('click', '#topic .top-topic .topic-info-btn', function(e){
 		var val = $(this).siblings('.date').attr('data-value');
+		ga('yueyuecompany.send', 'event', 'session-detail', 'click', val);
+		ga('yueyuebookstore.send', 'event', 'session-detail', 'click', val);
+
+	}).on('click', '#topic .mobile-topic .topic-info-btn', function(e){
+		var val = $(this).siblings('.date').attr('data-value');
+		console.log(val);
 		ga('yueyuecompany.send', 'event', 'session-detail', 'click', val);
 		ga('yueyuebookstore.send', 'event', 'session-detail', 'click', val);
 
