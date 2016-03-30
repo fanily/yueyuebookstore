@@ -55,6 +55,16 @@ jQuery(function($){
 		ga('yueyuecompany.send', 'event', 'session-apply', 'click', val);
 		ga('yueyuebookstore.send', 'event', 'session-apply', 'click', val);
 
+	}).on('click', '#topic .top-topic .not-available-btn', function(e){
+		var val = $(this).siblings('.date').attr('data-value');
+		ga('yueyuecompany.send', 'event', 'session-apply-not-available', 'click', val);
+		ga('yueyuebookstore.send', 'event', 'session-apply-not-available', 'click', val);
+
+	}).on('click', '.lightbox .not-available-btn', function(e){
+		var val = $(this).attr('data-value');
+		ga('yueyuecompany.send', 'event', 'session-apply-not-available', 'click', val);
+		ga('yueyuebookstore.send', 'event', 'session-apply-not-available', 'click', val);
+
 	}).on('click', '#topic .curator .more', function(e){
 		var val = $(this).attr('data-value');
 		ga('yueyuecompany.send', 'event', 'curator', 'click', val);

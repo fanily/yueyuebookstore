@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="css/ungrid.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/lightslider.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css?t=1458731769"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css?t=1458731799"/>
 	<script type="text/javascript" src="js/jquery.1.11.3.min.js"></script>
 	<script type="text/javascript" src="js/moment.min.js"></script>
 	<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
@@ -262,7 +262,12 @@
 	<span class="name">講者：{{speaker}}</span>
 	<div class="description">{{&session_info}}</div>
 	<span class="btn lightbox-btn topic-info-btn" data-type="topic" data-id="{{id}}">【詳細資訊】</span>
-	<span class="btn"><a class="register-url" href="{{&url}}" target="_blank">【立即報名】</a></span>
+	{{#url}}
+		<span class="btn"><a class="register-url" href="{{&url}}" target="_blank">【立即報名】</a></span>
+	{{/url}}
+	{{^url}}
+		<span class="btn not-available-btn">【尚未開放報名】</span>
+	{{/url}}
 </script>
 <script id="template-mobile-topic-info" type="x-tmpl-mustache">
 	<span class="date" data-value="{{fulldate}}">{{date}}</span>
@@ -287,12 +292,22 @@
 <script id="template-topic-next" type="x-tmpl-mustache">
 	<span class="date droid italic">{{date}}</span>
 	<div class="info row">
-		<div class="topic col">
-			<span>主題</span><strong>{{session}}</strong>
-		</div>
-		<div class="curator col">
-			<span>講者</span><strong>{{speaker}}</strong>
-		</div>
+		<div class="topic col"><span>主題</span><strong>
+			{{#session}}
+				{{session}}
+			{{/session}}
+			{{^session}}
+				敬請期待
+			{{/session}}
+		</strong></div>
+		<div class="curator col"><span>講者</span><strong>
+			{{#speaker}}
+				{{speaker}}
+			{{/speaker}}
+			{{^speaker}}
+				敬請期待
+			{{/speaker}}
+		</strong></div>
 	</div>
 </script>
 <script id="template-post-layout" type="x-tmpl-mustache">
@@ -342,7 +357,13 @@
 	<span class="title">貼心提醒</span>
 	<p class="sub">因座位有限，報名後如不克前來也請在活動當天中午前告知取消，謝謝！</p>
 	<p class="sub">在 Facebook 活動按參加並不算完成報名喔，請一定要來信或來電通知！</p>
-	<a href="{{&url}}" target="_blank" class="link register-url" data-value="{{fulldate}}">我要報名</a>
+
+	{{#url}}
+		<a href="{{&url}}" target="_blank" class="link register-url" data-value="{{fulldate}}">我要報名</a>
+	{{/url}}
+	{{^url}}
+		<span class="link not-available-btn" data-value="{{fulldate}}">尚未開放報名</span>
+	{{/url}}
 </script>
 <script id="template-lightbox-curator" type="x-tmpl-mustache">
 	<span class="title">主題</span>
@@ -357,8 +378,8 @@
 		<p>{{&.}}</p>
 	{{/info}}
 </script>
-<script type="text/javascript" src="js/index.js?t=1458731889"></script>
-<script type="text/javascript" src="js/ga-event.js?t=1458731889"></script>
+<script type="text/javascript" src="js/index.js?t=1458731899"></script>
+<script type="text/javascript" src="js/ga-event.js?t=1458731899"></script>
 </div>
 </body>
 </html>
