@@ -15,7 +15,7 @@ var MustacheTemplate = (function(){
     };
 })();
 
-$.getJSON("config.json?t=1458731899", function(config) {
+$.getJSON("config.json?t=1458731999", function(config) {
 	var get_fanily_post = function(keyword, body, callback) {
 		$.ajax({
 			url : config.api+"search/lists/"+keyword,
@@ -49,7 +49,17 @@ $.getJSON("config.json?t=1458731899", function(config) {
 		if(window.devicePixelRatio > 1) {
 			v.curator.avatars += '@2x';
 		}
+		if (v.curator.info.length > 90) {
+			var info = v.curator.info.substring(0, 90);
+			var index = info.lastIndexOf('，');
+
+			if (index !== -1) {
+				info = info.substring(0, index);
+			}
+			v.curator.info = info+'⋯⋯';
+		}
 		v.curator.id = k;
+
 		var curatorHtml = MustacheTemplate('#template-topic-curator', v.curator);
 		$('#topic .topic-content:eq('+k+') .curator-inner').append(curatorHtml);
 
@@ -142,8 +152,8 @@ $.getJSON("config.json?t=1458731899", function(config) {
 						}
 
 						var data = temp[$this];
-						if (data.post_image == '') {
-							data.post_image = 'img/default.png';
+						if (data.post_image == '/img/logo.png') {
+							data.post_image = 'img/logo.png';
 						}
 						postData.push({
 							title: data.post_title,
@@ -172,6 +182,24 @@ $.getJSON("config.json?t=1458731899", function(config) {
 		});
 	});
 
+	//append video
+	$.each(config.video,function(key,v){
+		if (key < 6) {
+			v.isShow = true;
+		} else {
+			v.isShow = false;
+		}
+		if (v.url === "") {
+			v.url = 'https://www.youtube.com/watch?v='+v.vid;
+		}
+	});
+
+	var videoHtml = MustacheTemplate('#template-video-layout', {video:config.video});
+	$('#video-list .video-list').append(videoHtml);
+	if (config.video.length > 6) {
+		$('#video-list .more').addClass('show');
+	}
+
 	$('body').on('click', '.lightbox-btn', function(e){
 		var type = $(this).attr('data-type');
 		if (type !== "about") {
@@ -196,6 +224,12 @@ $.getJSON("config.json?t=1458731899", function(config) {
 		$('.lightbox .lightbox-content[data-type='+type+']').addClass('show');
 		$('.lightbox').addClass('show');
 		$('body').css({'overflow':'hidden'});
+	}).on('click', '#video-list .more', function(e){
+		$('#video-list .video:not(.show):lt(6)').addClass('show');
+		var n = $('#video-list .video:not(.show)').length;
+		if (n === 0) {
+			$('#video-list .more').removeClass('show');
+		}
 	});
 
 	if (window.location.hash !== "") {

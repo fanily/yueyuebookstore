@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="css/ungrid.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/lightslider.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css?t=1458731799"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css?t=1458734999"/>
 	<script type="text/javascript" src="js/jquery.1.11.3.min.js"></script>
 	<script type="text/javascript" src="js/moment.min.js"></script>
 	<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
@@ -93,7 +93,7 @@
 </div></div>
 <div class="toolbar">
 	<div class="toolbar-inner">
-		<h1 class="logo"><a href="#">閱樂書沙龍</a></h1>
+		<h1 class="logo"><a href="http://fanplus.fanily.tw/yueyuebookstore/">閱樂書沙龍</a></h1>
 		<ul class="nav">
 			<li><a class="lightbox-btn" href="#about" data-type="about">關於閱樂</a></li>
 			<li><a class="go" href="#here">閱樂在哪裡</a></li>
@@ -119,8 +119,10 @@
 		<ul class="mobile-menu">
 			<li><a class="lightbox-btn" href="#about" data-type="about">關於閱樂</a></li>
 			<li><a class="go" href="#here">閱樂在哪裡</a></li>
+			<li><a class="go" href="#video-list">直播影片</a></li>
 			<li><a class="go" href="#history">閱樂專欄</a></li>
 			<li><a class="go" href="#post-list">更多閱樂</a></li>
+			<li><a class="go" href="#yueyue-menu">閱樂菜單</a></li>
 			<li><a class="go" href="#social">社群</a></li>
 		</ul>
 	</div>
@@ -131,6 +133,15 @@
 <section id="topic" class="main-section">
 	<ul class="tab topic-tab"></ul>
 	<div class="topic-container"></div>
+</section>
+<!-- video-list -->
+<section id="video-list" class="video-section"><div class="block">
+    <h2 class="title">直播影片</h2>
+    <div class="content">
+	    <div class="video-list"></div>
+		<span class="more droid italic">Read More...</span>
+	</div>
+  </div>
 </section>
 <!-- history -->
 <section id="history" class="post-section"><div class="block">
@@ -148,6 +159,20 @@
 		<div class="post-container"></div>
 	</div></div>
 </div></section>
+<!-- yueyue-menu -->
+<section id="yueyue-menu" class="menu-section"><div class="block">
+    <h2 class="title">閱樂菜單</h2>
+    <div class="intro">
+    	一杯飲品即可入座，<br>
+		佐配輕食三明治、甜在心甜點，<br>
+		輕鬆閱讀無負擔
+    </div>
+    <div class="content">
+		<a class="download" href="menu.pdf" target="_blank">菜單下載</a>
+		（以現場 menu 為主）
+	</div>
+  </div>
+</section>
 <!-- here -->
 <section id="here" class="here-section"><div class="block">
 	<h2 class="title">閱樂在哪裡</h2>
@@ -239,7 +264,7 @@
 				<ul class="booklist"></ul>
 			</div>
 			<div class="col next-topic">
-				<span class="title">次月主題預告</span>
+				<span class="title">{{name}}<br>次月講題預告</span>
 				<div class="content"></div>
 			</div>
 		</div>
@@ -260,7 +285,6 @@
 	</span>
 	<span class="title">{{session}}</span>
 	<span class="name">講者：{{speaker}}</span>
-	<div class="description">{{&session_info}}</div>
 	<span class="btn lightbox-btn topic-info-btn" data-type="topic" data-id="{{id}}">【詳細資訊】</span>
 	{{#url}}
 		<span class="btn"><a class="register-url" href="{{&url}}" target="_blank">【立即報名】</a></span>
@@ -268,12 +292,20 @@
 	{{^url}}
 		<span class="btn not-available-btn">【尚未開放報名】</span>
 	{{/url}}
+	{{#live}}
+		<span class="btn"><a href="{{&live}}" target="_blank">【前往觀看】</a></span>
+	{{/live}}
 </script>
 <script id="template-mobile-topic-info" type="x-tmpl-mustache">
-	<span class="date" data-value="{{fulldate}}">{{date}}</span>
+	<span class="date" data-value="{{fulldate}}">
+		{{date}}<span class="time">19:30~21:00</span>
+	</span>
 	<span class="title">{{session}}</span>
 	<span>講者：{{speaker}}</span>
 	<span class="btn lightbox-btn topic-info-btn" data-type="topic" data-id="{{id}}">詳細資訊</span>
+	{{#live}}
+		<a class="live-btn" href="{{live}}" target="_blank">前往觀看</span>
+	{{/live}}
 </script>
 <script id="template-topic-books" type="x-tmpl-mustache">
 	{{#books}}
@@ -292,7 +324,7 @@
 <script id="template-topic-next" type="x-tmpl-mustache">
 	<span class="date droid italic">{{date}}</span>
 	<div class="info row">
-		<div class="topic col"><span>主題</span><strong>
+		<div class="topic col"><span>講題</span><strong>
 			{{#session}}
 				{{session}}
 			{{/session}}
@@ -340,8 +372,24 @@
 		</a>
 	{{/more}}
 </script>
+<script id="template-video-layout" type="x-tmpl-mustache">
+{{#video}}
+	{{#isShow}}
+		<div class="video show">
+	{{/isShow}}
+	{{^isShow}}
+		<div class="video">
+	{{/isShow}}
+	<a href="https://www.youtube.com/watch?v={{vid}}" target="_blank" class="thumb">
+		<i class="fa fa-play-circle"></i>
+		<img class="video-pic" src="http://i.ytimg.com/vi/{{vid}}/maxresdefault.jpg">
+	</a>
+	<a href="{{url}}" target="_blank"><span class="caption">{{&title}}</span></a>
+</div>
+{{/video}}
+</script>
 <script id="template-lightbox-topic" type="x-tmpl-mustache">
-	<span class="title">主題</span>
+	<span class="title">講題</span>
 	<p>{{session}}</p>
 
 	{{#session_info}}
@@ -378,7 +426,7 @@
 		<p>{{&.}}</p>
 	{{/info}}
 </script>
-<script type="text/javascript" src="js/index.js?t=1458733999"></script>
+<script type="text/javascript" src="js/index.js?t=1458735599"></script>
 <script type="text/javascript" src="js/ga-event.js?t=1458731899"></script>
 </div>
 </body>
