@@ -15,7 +15,7 @@ var MustacheTemplate = (function(){
     };
 })();
 
-$.getJSON("config.json?t=1458731999", function(config) {
+$.getJSON("config.json?t=1460689863", function(config) {
 	var get_fanily_post = function(keyword, body, callback) {
 		$.ajax({
 			url : config.api+"search/lists/"+keyword,
@@ -70,7 +70,7 @@ $.getJSON("config.json?t=1458731999", function(config) {
 		var topicHtml = MustacheTemplate('#template-topic-info', v.topic);
 		$('#topic .topic-content:eq('+k+') .top-topic .info').append(topicHtml);
 
-		
+
 		if (v.books.length === 0) {
 			$('#topic .topic-content:eq('+k+') .info-topic .books').hide();
 		} else {
@@ -109,7 +109,7 @@ $.getJSON("config.json?t=1458731999", function(config) {
 					} else{
 						controlHtml += '<li class="dot"></li>';
 					}
-					
+
 					c++;
 				}
 				controlHtml += '<li class="next"></li></ul>';
@@ -117,7 +117,7 @@ $.getJSON("config.json?t=1458731999", function(config) {
 				$('#topic .topic-content:eq('+k+') .books').append(controlHtml);
 			}
 		}
-			
+
 		if (v.next_topic.date === "") {
 			$('#topic .topic-content:eq('+k+') .info-topic .next-topic').hide();
 		} else {
@@ -172,7 +172,7 @@ $.getJSON("config.json?t=1458731999", function(config) {
 					$postSection.find('.post-content:eq('+k+')').append(postHtml);
 				}
 				if (v.current) {
-					setInterval(function(){ 
+					setInterval(function(){
 						$postSection.find('.current .grid').masonry({
 							"itemSelector": '.grid-item'
 						});
@@ -342,7 +342,7 @@ $('body').on('click', '#back-top a', function(e){
 	} else {
 		$('.mobile-menu').slideUp('fast');
 	}
-	
+
 }).on('click', '.mobile-menu .go', function(e){
 	$('.mobile-nav .menu').click();
 
@@ -381,7 +381,7 @@ $('body').on('click', '#back-top a', function(e){
 }).on('click', '.lightbox .close', function(e){
 	$('.lightbox .lightbox-content').removeClass('show');
 	$('.lightbox').removeClass('show');
-	
+
 	$('body').css({'overflow':'auto'});
 
 }).on('click', '#topic .control .prev', function(e){
