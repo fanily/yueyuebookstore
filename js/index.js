@@ -15,7 +15,7 @@ var MustacheTemplate = (function(){
     };
 })();
 
-$.getJSON("config.json?t=1462881190", function(config) {
+$.getJSON("config.json?t=1462887103", function(config) {
 	var get_fanily_post = function(keyword, body, callback) {
 		$.ajax({
 			url : config.api+"search/lists/"+keyword,
