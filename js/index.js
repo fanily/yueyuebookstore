@@ -15,7 +15,7 @@ var MustacheTemplate = (function(){
     };
 })();
 
-$.getJSON("config.json?t=1473081640", function(config) {
+$.getJSON("config.json?t=1473756185", function(config) {
 	var get_fanily_post = function(keyword, body, callback) {
 		$.ajax({
 			url : config.api+"search/lists/"+keyword,
@@ -213,6 +213,7 @@ $.getJSON("config.json?t=1473081640", function(config) {
 					name: config.salon[id].name,
 					info: config.salon[id].info,
 					curator_name: config.salon[id].curator.name,
+					curator_avatars: config.salon[id].curator.avatars,
 					curator_info: config.salon[id].curator.info
 				});
 			}
